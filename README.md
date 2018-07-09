@@ -24,3 +24,6 @@
 	* Concept of input->black box->output 
 * Evaluate critically how student solutions and existing information systems and policies, take account of future risks and sustainability and provide opportunities for innovation and enterprise (ACTDIP042)
 	* Resilience to change (scalability, maintainability)
+* Plan and manage projects using an iterative and collaborative approach, identifying risks and considering safety and sustainability (ACTDIP044 - Scootle )
+	* Prototyping? Team based project.
+	
