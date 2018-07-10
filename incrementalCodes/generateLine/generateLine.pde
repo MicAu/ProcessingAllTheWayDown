@@ -4,6 +4,7 @@ boolean grid = true;
 boolean colors = true;
 
 int counter = 0;
+
 void setup() {
   size(300, 300);
 }
@@ -42,7 +43,7 @@ void setVertical() {
 void setArbitrary() { 
     x1 = x2 = y1 = y2 = 0;
     
-    while(x1 + x2 + y1 + y2 != x1 * 4)
+    while(x1 + x2 + y1 + y2 != x1 * 4) //Very naive solution for ensuring that a dot is not created
     {
       x1 = (int)random(4)*30;
       x2 = x1 + (int) random (8)*30;
