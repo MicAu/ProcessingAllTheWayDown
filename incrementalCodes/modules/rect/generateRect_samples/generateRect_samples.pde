@@ -37,7 +37,6 @@ void draw() {
     exit();
   }
   counter++; 
-
   rWidth = ((int)random(1, 5))*cellWidth;
   rHeight = ((int)random(1, 5))*cellHeight;
 
@@ -55,7 +54,7 @@ void draw() {
   fill(0);
   textSize(16);
   if (x > 2*cellWidth && x < width - 2*cellWidth) {
-    textAlign(CENTER, CENTER);
+    textAlign(CENTER, CENTER);    
     text("rect("+x+", "+y+", "+rWidth+", "+rHeight+");", x, y-12);
   } else if (x <= 2*cellWidth) {
     textAlign(LEFT, CENTER);

@@ -1,8 +1,21 @@
 int counter = 0;
-int square = 100;
+int rWidth, rHeight;
+
+int cellWidth, cellHeight;
+int partitions = 10;
+
+void drawRectangle(int x, int y) {
+  background(255);
+  drawGrid(10, 10);
+  stroke(0);
+  fill(255, 0, 0, 200);
+  rect(x, y, rWidth, rHeight);
+}
 
 void setup() {
   size(300, 300);
+  cellWidth = width/partitions;
+  cellHeight = height/partitions;
   background(255);
 }
 
@@ -30,74 +43,45 @@ void draw() {
     exit();
   }
   counter++;
-  int x = (int)random(9)*30 + 30;
-  int y = (int)random(9)*30 + 30;
+  rWidth = ((int)random(1, 5))*cellWidth;
+  rHeight = ((int)random(1, 5))*cellHeight;
 
-  if (x > 60 && x < width - 60) {
-    background(255);
-    drawGrid(10, 10);
-    textAlign(CENTER, CENTER);
-    //strokeWeight(10);
-    stroke(0);
-    rect(x, y, square, square);
-    fill(0);
-    textSize(16);
-    text("rect("+x+", "+y+");", x, y+10);
-    saveFrame("./../solutions/solutions-"+counter+".png");
-
-    background(255);
-    drawGrid(10, 10);
-    textAlign(CENTER, CENTER);
-    //strokeWeight(10);
-    stroke(0);
-    rect(x, y, square, square);
-    fill(0);
-    textSize(16);
-    text("rect(            );", x, y+10);
-    saveFrame("./../toDo/toDo-"+counter+".png");
-  } else if (x <= 60) {
-    background(255);
-    drawGrid(10, 10);
-    textAlign(LEFT, CENTER);
-    //strokeWeight(10);
-    stroke(0);
-    rect(x, y, square, square);
-    fill(0);
-    textSize(16);
-    text("rect("+x+", "+y+");", x+10, y);
-    saveFrame("./../solutions/solutions-"+counter+".png");
-
-    background(255);
-    drawGrid(10, 10);
-    textAlign(LEFT, CENTER);
-    //strokeWeight(10);
-    stroke(0);
-    rect(x, y, square, square );
-    fill(0);
-    textSize(16);
-    text("rect(            );", x+10, y);
-    saveFrame("./../toDo/toDo-"+counter+".png");
-  } else {
-    background(255);
-    drawGrid(10, 10);
-    textAlign(RIGHT, CENTER);
-    //strokeWeight(10);
-    stroke(0);
-    rect(x, y, square, square);
-    fill(0);
-    textSize(16);
-    text("rect("+x+", "+y+");", x-10, y);
-    saveFrame("./../solutions/solutions-"+counter+".png");
-
-    background(255);
-    drawGrid(10, 10);
-    textAlign(RIGHT, CENTER);
-    //strokeWeight(10);
-    stroke(0);
-    rect(x, y, square, square);
-    fill(0);
-    textSize(16);
-    text("rect(            );", x-10, y);
-    saveFrame("./../toDo/toDo-"+counter+".png");
+  if (counter < 5) {
+    rHeight = rWidth;
   }
+
+  int x = (int)random(partitions-rWidth/cellWidth-1)*cellWidth + cellWidth;
+  int y = (int)random(partitions-rHeight/cellHeight-1)*cellHeight + cellHeight;
+
+  drawRectangle(x, y);
+
+  fill(0);
+  textSize(16);
+  if (x > 2*cellWidth && x < width - 2*cellWidth) {
+    textAlign(CENTER, CENTER);
+    text("rect("+x+", "+y+", "+rWidth+", "+rHeight+");", x, y-12);
+  } else if (x <= 2*cellWidth) {
+    textAlign(LEFT, CENTER);
+    text("rect("+x+", "+y+", "+rWidth+", "+rHeight+");", x+10, y-12);
+  } else {
+    textAlign(RIGHT, CENTER);    
+    text("rect("+x+", "+y+", "+rWidth+", "+rHeight+");", x-10, y-12);
+  }
+  saveFrame("./../solutions/solutions-"+counter+".png");
+
+  drawRectangle(x, y);
+
+  fill(0);
+  textSize(16);
+  if (x > 2*cellWidth && x < width - 2*cellWidth) {
+    textAlign(CENTER, CENTER);    
+    text("rect(                         );", x, y-12);
+  } else if (x <= 2*cellWidth) {
+    textAlign(LEFT, CENTER);
+    text("rect(                         );", x+10, y-12);
+  } else {
+    textAlign(RIGHT, CENTER);
+    text("rect(                         );", x-10, y-12);
+  }
+  saveFrame("./../toDo/toDo-"+counter+".png");
 }
