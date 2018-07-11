@@ -16,9 +16,9 @@ void draw() {
     g = 255;
     b = 255;
   } else {    
-    r = (int)random(256);
-    g = (int)random(256);
-    b = (int)random(256);
+    r = ((int)random(52))*5;
+    g = ((int)random(52))*5;
+    b = ((int)random(52))*5;
   }
   counter++;
 
