@@ -15,8 +15,8 @@ void drawGrid(int c, int r) {
   stroke(0, 50);
   strokeWeight(1);
   for (int i=1; i < c; i++) {
-    for (int k=0; k <= height; k+=15) {
-      if (k > 0 && k < height && k%30==0) {
+    for (int k=0; k <= height; k+=cellWidth/2) {
+      if (k > 0 && k < height && k%cellWidth==0) {
         fill(255, 0, 0, 200);
         textAlign(LEFT, CENTER);
         textSize(8);
