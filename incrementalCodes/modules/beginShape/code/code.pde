@@ -23,8 +23,8 @@ void shape1() {
   int yPoint = height/2+30;
   int xText =30;
   int yText =30;
-  printText("(red) Starting point: ("+xPoint+","+yPoint+")", 10, 30, 30);
-  String str = "beginShape(){\n";
+  printText("(red) Starting point: ("+xPoint+","+yPoint+")", 10,30, 30);
+  String str = "beginShape( ){\n";
   str+="vertex(180,180);\n";
   int point = 2;
   int[][] arr = new int[numOfVertices][3];
@@ -84,34 +84,27 @@ void shape1() {
     arr[idx][0]=xPoint;
     arr[idx][1]=yPoint;
     arr1[idx++] =colour(point);
-    str+="vertex("+xPoint+","+yPoint+");\n";
-    yText+=10;
+    str+="\tvertex("+xPoint+","+yPoint+");\n";
+    yText+=15;
     printText(colour(point++)+"point"+": ("+"     "+","+"      "+")", 10, xText, yText);
     fill((int)random(255), 255, (int)random(255));
   }
   endShape(CLOSE);
   
-  startingPoint(width/2+30, height/2+30);
+  point(width/2+30,height/2+30,"(red)");
   for(int i=0;i<arr.length;i++){
     point(arr[i][0],arr[i][1],arr1[i]);
   }
   saveFrame("./../problem/beginShapeProblem-"+counter+".png");
-  str+="endShape();";
-  printText(str,10,30,150);
+  str+="endShape( );";
+  printText(str,10,30,180);
   saveFrame("./../solution/beginShapeSolution-"+counter+".png");
   saveFrame("./../sample/beginShapeSample-"+counter+".png");
 }
 
-
-void startingPoint(int xPos, int yPos) {
-  stroke(255, 0, 0);
-  strokeWeight(4);
-  point(xPos, yPos);
-}
-
-
 void printText(String str, int size, int xPos, int yPos) {
   textSize(size);
+  textAlign(LEFT);
   fill(0);
   text(str, xPos, yPos);
 }
@@ -123,9 +116,12 @@ void point(int xpos, int ypos, String colour){
     stroke(0,255,0);
   } else if (colour=="(purple)"){
     stroke(255,0,255);
-  } else {
-    stroke(255,255,255);
+  }  else if (colour =="(red)"){
+    stroke(255,0,0);
+  }  else {
+    stroke(255,255,0);
   }
+  strokeWeight(4);
   point(xpos,ypos);
 }
 
@@ -137,7 +133,7 @@ String colour (int n){
   } else if (n==4){
     return "(purple)";
   } else {
-    return "(white)";
+    return "(yellow)";
   }
 }
 
