@@ -95,11 +95,11 @@ void shape1() {
   for(int i=0;i<arr.length;i++){
     point(arr[i][0],arr[i][1],arr1[i]);
   }
-  saveFrame("./../problem/beginShapeProblem-"+counter+".png");
+  saveFrame("./../toDo/toDo-"+counter+".png");
   str+="endShape( );";
   printText(str,10,30,180);
-  saveFrame("./../solution/beginShapeSolution-"+counter+".png");
-  saveFrame("./../sample/beginShapeSample-"+counter+".png");
+  saveFrame("./../solutions/solution-"+counter+".png");
+  saveFrame("./../samples/sample-"+counter+".png");
 }
 
 void printText(String str, int size, int xPos, int yPos) {
