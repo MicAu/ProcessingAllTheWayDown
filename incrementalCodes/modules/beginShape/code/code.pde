@@ -7,8 +7,8 @@ void setup() {
 
 void draw() {
   for (int i =0; i<20; i++) {
-    background(150);
-    drawGrid();
+    background(255);
+    drawGrid(10, 10);
     counter++;
     shape1();
     if (i==19){
@@ -95,11 +95,11 @@ void shape1() {
   for(int i=0;i<arr.length;i++){
     point(arr[i][0],arr[i][1],arr1[i]);
   }
-  saveFrame("/Users/matthewlee/Desktop/beginShape/problem/beginShapeProblem-"+counter+".png");
+  saveFrame("./../problem/beginShapeProblem-"+counter+".png");
   str+="endShape();";
   printText(str,10,30,150);
-  saveFrame("/Users/matthewlee/Desktop/beginShape/solution/beginShapeSolution-"+counter+".png");
-  saveFrame("/Users/matthewlee/Desktop/beginShape/sample/beginShapeSample-"+counter+".png");
+  saveFrame("./../solution/beginShapeSolution-"+counter+".png");
+  saveFrame("./../sample/beginShapeSample-"+counter+".png");
 }
 
 
@@ -141,18 +141,37 @@ String colour (int n){
   }
 }
 
-void drawGrid() {
+//void drawGrid() {
 
-  textSize(8);
-  textAlign(LEFT, TOP);
-  fill(0, 0, 255);
-  stroke(255, 255, 255, 100);
-  for (int i =0; i<width; i+=width/10) {
-    line(i, 0, i, height);
-    text(i, i+5, 0);
-  }
-  for (int i=0; i<height; i+=height/10) {
-    line(0, i, height, i);
-    text(i, 0, i+5);
+//  textSize(8);
+//  textAlign(LEFT, TOP);
+//  fill(0, 0, 255);
+//  stroke(255, 255, 255, 100);
+//  for (int i =0; i<width; i+=width/10) {
+//    line(i, 0, i, height);
+//    text(i, i+5, 0);
+//  }
+//  for (int i=0; i<height; i+=height/10) {
+//    line(0, i, height, i);
+//    text(i, 0, i+5);
+//  }
+//}
+
+void drawGrid(int c, int r) {
+  stroke(0, 50);
+  strokeWeight(1);
+  for (int i=1; i < c; i++) {
+    for (int k=0; k <= height; k+=15) {
+      if (k > 0 && k < height && k%30==0) {
+        fill(255, 0, 0, 200);
+        textAlign(LEFT, CENTER);
+        textSize(8);
+        text(k, 5, k);
+        textAlign(CENTER, CENTER);
+        text(k, k, 5);
+      }
+      line(i*(width/c), k-5, i*(width/c), k+5);
+      line(k-5, i*(width/c), k+5, i*(width/c));
+    }
   }
 }
